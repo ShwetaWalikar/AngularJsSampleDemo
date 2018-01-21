@@ -1,0 +1,45 @@
+<form name="myForm">
+  <div class="form-group">
+  	<div class="col-md-4">
+    <label for="fname">First Name</label>
+    <input type="text" class="form-control" id="fname" name="fname" ng-model="fname" placeholder="Enter first name" ng-required="true">
+    <span ng-show="myForm.$submitted || myForm.fname.$touched">First name is required</span>
+	</div>
+    
+  </div>
+  <div class="form-group">
+  	<div class="col-md-4">
+    <label for="lname">Last Name</label>
+    <input type="text" class="form-control" id="lname" name="lname" ng-model="lname" placeholder="Enter last name">
+	</div>
+    
+  </div>
+  <div class="form-group">
+  	<div class="col-md-4">
+    <label for="mobile">Mobile Number</label>
+    <input type="text" class="form-control" id="mobile" name="mobile" ng-model="mobile" ng-minlength=10 ng-maxlength=10 
+    ng-pattern="/^[0-9]{10,10}$/" placeholder="Enter mobile number" ng-required="true">
+    <span ng-show="myForm.mobile.$error.pattern">Not valid mobile number</span>
+	</div>
+  </div>
+  
+  <button type="submit" class="btn btn-primary" ng-click="saveDetails()" ng-disabled="!fname">Submit</button>
+
+  <div></div>
+  <p>------------------------------------------------------------------------</p>
+  <div class="col-md-6">
+
+   <table class="table">  
+           <thead>  
+               <th>First Name</th>  
+               <th>Last Name</th>  
+               <th>Mobile Number</th>  
+           </thead>  
+           <tr ng-repeat="Emp in DetailList">  
+               <td>{{ Emp.fname }}</td>  
+               <td>{{ Emp.lname }}</td>  
+               <td>{{ Emp.mobile }}</td>  
+           </tr>  
+    </table> 
+  </div>
+</form>
